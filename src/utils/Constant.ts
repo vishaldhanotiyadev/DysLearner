@@ -1,0 +1,37 @@
+export const locale = 'en-US';
+export const DEFAULT_LANGUALE = 'en';
+export const API_TIME_OUT = 120000;
+export const GENERIC_ERROR_CODES = {
+  ERROR_401: 'unauthorized',
+  ERROR_403: 'forbidden',
+  ERROR_404: 'notFound',
+  ERROR_500: 'internalServerError',
+  ERROR_TIMEOUT: 'TIMEOUT',
+  ERROR_503: 'serviceUnavailable',
+  ERROR_408: 'timeout',
+};
+export const HttpStatusCode = {
+  OK: 200,
+  ACCESS_DENIED:201,
+  CREATED: 201,
+  BAD_REQUEST: 400,
+  UNAUTHORIZED: 401,
+  FORBIDDEN: 403,
+  NOT_FOUND: 404,
+  NETWORK_ERROR:0,
+  INTERNAL_SERVER_ERROR: 500,
+  SERVICE_UNAVAILABLE: 503,
+  REQUEST_TIMEOUT: 408,
+  NOT_IMPLEMENTED:309,
+  UPGRADE_REQUIRED:205,
+  TIMEOUT: 'ECONNABORTED',
+};
+
+export const INPUT_FIELD_LENGTH = {
+  TEXT_AREA_MAX_LENGTH: 500,
+  TEXT_FIELD_MAX_LENGTH: 100,
+  REASON_FIELD_MAX_LENGTH: 250,
+  NOTES_MAX_LENGTH: 250,
+  FILE_NAME_MAX_LENGTH: 100,
+  TEXT_FIELD_MIN_LENGTH: 2,
+};
