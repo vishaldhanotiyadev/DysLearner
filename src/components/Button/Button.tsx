@@ -14,7 +14,6 @@ import {
 import React from "react";
 import { Platform, StyleSheet, TouchableOpacity } from "react-native";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-
 import { Box, Text } from "@components/Restyle";
 import theme, { palette, Theme } from "theme/theme";
 import { LinearGradient } from "expo-linear-gradient";
@@ -39,6 +38,7 @@ type Props = RestyleProps & {
   prefix?: React.ReactChild;
   suffix?: React.ReactChild;
   disabled?: boolean;
+  gradientColors?: any;
   alignTextLeft?: boolean;
   onPress?: () => void;
   prefixMarginRight?: keyof typeof theme.spacing;
@@ -54,6 +54,7 @@ type Props = RestyleProps & {
 const Button: React.FC<Props> = ({
   fullWidth = false,
   disabled = false,
+  gradientColors=palette.loginButtonGradient,
   children,
   onPress,
   prefix,
@@ -88,15 +89,15 @@ const Button: React.FC<Props> = ({
       color = "black";
       labelVariant = "buttonLabel";
       break;
-   case "gradient":
+    case "gradient":
       color = "black";
       labelVariant = "buttonLabel";
       break;
     case "icon":
       color = "white";
       labelVariant = null;
-      styleOverrides = { ...styleOverrides,};
-    //  buttonPadding = "xs";
+      styleOverrides = { ...styleOverrides };
+      //  buttonPadding = "xs";
       break;
 
     default:
@@ -116,140 +117,140 @@ const Button: React.FC<Props> = ({
         testID={testID}
         accessibilityLabel={accessibilityLabel}
       >
-     {rest.variant==='gradient'?
-       <LinearGradient
-           colors={[palette.gradient01, palette.gradient02, palette.gradient03]}
-           style={[
-            disabled && {
-              backgroundColor: theme.colors.grey02,
-              borderColor: theme.colors.grey02,
-            },
-            borderColor && {
-              borderColor: borderColor,
-              borderWidth: 1,
-            },
-            { borderRadius:10,
-              justifyContent: "center",
-              height: isSmall ? height1 : 56,
-            },
-          ]}
-           start={{ x: 0.2, y: 0.3 }}
-           end={{ x: 1.1, y: 0.7 }}
-         >
-         <RestyleButton
-          {...rest}
-          style={[
-            styleOverrides,
-            disabled && {
-              backgroundColor: theme.colors.grey02,
-              borderColor: theme.colors.grey02,
-            },
-            borderColor && {
-              borderColor: borderColor,
-              borderWidth: 1,
-            },
-            {
-              justifyContent: "center",
-              height: isSmall ? height1 : 56,
-            },
-          ]}
-        >
-         
-          {prefix && (
-            <Box
-              width={16}
-              height={16}
-              marginRight={prefixMarginRight || "s"}
-              alignItems="center"
-              justifyContent="center"
-              pointerEvents="none"
-            >
-              {prefix}
-            </Box>
-          )}
-          <Box
-            alignItems={alignTextLeft ? "flex-start" : "center"}
-            justifyContent="center"
-            style={(!prefix || alignTextLeft) && { flex: 1 }}
+        {rest.variant === "gradient" ? (
+          <LinearGradient
+            colors={gradientColors}
+            style={[
+              disabled && {
+                backgroundColor: theme.colors.grey02,
+                borderColor: theme.colors.grey02,
+              },
+              borderColor && {
+                borderColor: borderColor,
+                borderWidth: 1,
+              },
+              {
+                borderRadius: 10,
+                justifyContent: "center",
+                height: isSmall ? height1 : 56,
+              },
+            ]}
+            start={{ x: 0.2, y: 0.3 }}
+            end={{ x: 1.1, y: 0.7 }}
           >
-            <Text
-              width={"100%"}
-              textAlign={"center"}
-              variant={labelVariant}
-              color={!disabled ? color : txtColor}
+            <RestyleButton
+              {...rest}
               style={[
-                alignTextLeft && {
-                  marginLeft: theme.spacing.m,
+                styleOverrides,
+                disabled && {
+                  backgroundColor: theme.colors.grey02,
+                  borderColor: theme.colors.grey02,
+                },
+                borderColor && {
+                  borderColor: borderColor,
+                  borderWidth: 1,
+                },
+                {
+                  justifyContent: "center",
+                  height: isSmall ? height1 : 56,
                 },
               ]}
             >
-              {children}
-            </Text>
-          </Box>
-          {suffix && (
-            <Box width="m" height="m" marginLeft="xs" pointerEvents="none">
-              {suffix}
-            </Box>
-          )}
-        </RestyleButton>
-                  </LinearGradient>
-
-    :
-        <RestyleButton
-          {...rest}
-          style={[
-            styleOverrides,
-            disabled && {
-              backgroundColor: theme.colors.grey02,
-              borderColor: theme.colors.grey02,
-            },
-            borderColor && {
-              borderColor: borderColor,
-              borderWidth: 1,
-            },
-            {
-              justifyContent: "center",
-              height: isSmall ? height1 : 56,
-            },
-          ]}
-        >
-          {prefix && (
-            <Box
-              width={16}
-              height={16}
-              marginRight={prefixMarginRight || "s"}
-              alignItems="center"
-              justifyContent="center"
-              pointerEvents="none"
-            >
-              {prefix}
-            </Box>
-          )}
-          <Box
-            alignItems={alignTextLeft ? "flex-start" : "center"}
-            justifyContent="center"
-            style={(!prefix || alignTextLeft) && { flex: 1 }}
+              {prefix && (
+                <Box
+                  width={16}
+                  height={16}
+                  marginRight={prefixMarginRight || "s"}
+                  alignItems="center"
+                  justifyContent="center"
+                  pointerEvents="none"
+                >
+                  {prefix}
+                </Box>
+              )}
+              <Box
+                alignItems={alignTextLeft ? "flex-start" : "center"}
+                justifyContent="center"
+                style={(!prefix || alignTextLeft) && { flex: 1 }}
+              >
+                <Text
+                  width={"100%"}
+                  textAlign={"center"}
+                  variant={labelVariant}
+                  color={!disabled ? color : txtColor}
+                  style={[
+                    alignTextLeft && {
+                      marginLeft: theme.spacing.m,
+                    },
+                  ]}
+                >
+                  {children}
+                </Text>
+              </Box>
+              {suffix && (
+                <Box width="m" height="m" marginLeft="xs" pointerEvents="none">
+                  {suffix}
+                </Box>
+              )}
+            </RestyleButton>
+          </LinearGradient>
+        ) : (
+          <RestyleButton
+            {...rest}
+            style={[
+              styleOverrides,
+              disabled && {
+                backgroundColor: theme.colors.grey02,
+                borderColor: theme.colors.grey02,
+              },
+              borderColor && {
+                borderColor: borderColor,
+                borderWidth: 1,
+              },
+              {
+                justifyContent: "center",
+                height: isSmall ? height1 : 56,
+              },
+            ]}
           >
-            <Text
-              width={"100%"}
-              textAlign={"center"}
-              variant={labelVariant}
-              color={!disabled ? color : txtColor}
-              style={[
-                alignTextLeft && {
-                  marginLeft: theme.spacing.m,
-                },
-              ]}
+            {prefix && (
+              <Box
+                width={16}
+                height={16}
+                marginRight={prefixMarginRight || "s"}
+                alignItems="center"
+                justifyContent="center"
+                pointerEvents="none"
+              >
+                {prefix}
+              </Box>
+            )}
+            <Box
+              alignItems={alignTextLeft ? "flex-start" : "center"}
+              justifyContent="center"
+              style={(!prefix || alignTextLeft) && { flex: 1 }}
             >
-              {children}
-            </Text>
-          </Box>
-          {suffix && (
-            <Box width="m" height="m" marginLeft="xs" pointerEvents="none">
-              {suffix}
+              <Text
+                width={"100%"}
+                textAlign={"center"}
+                variant={labelVariant}
+                color={!disabled ? color : txtColor}
+                style={[
+                  alignTextLeft && {
+                    marginLeft: theme.spacing.m,
+                  },
+                ]}
+              >
+                {children}
+              </Text>
             </Box>
-          )}
-        </RestyleButton>}
+            {suffix && (
+              <Box width="m" height="m" marginLeft="xs" pointerEvents="none">
+                {suffix}
+              </Box>
+            )}
+          </RestyleButton>
+        )}
       </TouchableOpacity>
     );
   };
@@ -314,11 +315,3 @@ const styles = StyleSheet.create({
 });
 
 export default Button;
-
-
-    // <LinearGradient
-    //           colors={[palette.gradient01, palette.gradient02, palette.gradient03]}
-    //           style={{   flex: 1,}}
-    //           start={{ x: 0.2, y: 0.3 }}
-    //           end={{ x: 1.1, y: 0.7 }}
-    //         ></LinearGradient>

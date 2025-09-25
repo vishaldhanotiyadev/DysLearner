@@ -11,34 +11,80 @@ export const palette = {
   black: "#000000",
   darkGrey: "#45484d",
   green: "#74ba3e",
-  yellow: "#ecbf4b",
   lightGray: "#f6f6f6",
+  lightGray01: "#d0d4db",
   slate: "#1e1f24",
   blue: "#007AFF",
   red: "#FF3B30",
+  blueMagenta: "#980ffa",
+  orange01: "#cf8600",
 
-  gradient01: "#7C94FC",
-  gradient02: "#B448FD",
-  gradient03: "#CE46C9",
+  loginGradient: ["#7C94FC", "#B448FD", "#CE46C9"],
+  headerGradient: ["#b147fc", "#d147cf", "#f2339c"],
+  overAllGradient: ["#f4e8ff", "#f9e6fa", "#fde6f5"],
+
+  myStudentHeader: ["#b14aff", "#d647cd", "#f5369f"],
+  guestHeader: ["#ba49f2", "#f7369a", "#f2ae00"],
+  loginButtonGradient: ["#b84af7", "#cf49d1", "#f03aa4"],
+
+  addMemberGradient01: ["#00d982", "#00aed1", "#2688ff"],
+  learnMoreGradient: ["#00db7c", "#00a8db", "#2684ff"],
+  pointGradient: ["#c879ff", "#e371d8", "#f768be"],
+  startLearningGradient: ["#5ca0ff", "#8c7dff", "#ad4fff"],
+
   transparent: "transparent",
 
-  grey02:'rgba(230, 230, 227, 1)',
-  semiTransparent:'rgba(255, 255, 255, 0.72)'
+  grey02: "rgba(230, 230, 227, 1)",
+  semiTransparent: "rgba(255, 255, 255, 0.25)",
+  pink: "#ded3d3ff",
+
+  purpleLight: "#E6D7FF",
+  purplePrimary: "#8B5CF6",
+  purpleDark: "#7C3AED",
+  pinkLight: "#F8BBD9",
+  pinkPrimary: "#EC4899",
+  greenLight: "#86EFAC",
+  greenPrimary: "#10B981",
+  gray: "#6B7280",
+  lightGrey: "#f7f9fa",
+  grayLight: "#F3F4F6",
+  orange: "#F97316",
+  yellow: "#EAB308",
+
+  gold: "#FFD700",
+  silver: "#C0C0C0",
+  bronze: "#CD7F32",
+  grey1: "#E5E7EB",
+  activeBorderColor: "#e8d4ff",
+  activeBackground: "#f4e8ff",
 };
 
 const theme = createTheme({
   colors: {
     background: palette.white,
-    onBackground: "e1f1f5",
-    onBackgroundSecondary: "e1f1f5",
-    onBackgroundTertiary: "e1f1f5",
+    onBackground: "#e1f1f5",
+    onBackgroundSecondary: "#e1f1f5",
+    onBackgroundTertiary: "#e1f1f5",
     surface: palette.white,
     onSurface: palette.textPrimary,
     onSurfaceSecondary: palette.textSecondary,
     buttonBackground: palette.black,
     androidShadow: `rgba(0,0,0,0.7)`,
     buttonText: palette.white,
-
+    mainBackground: palette.purpleLight,
+    cardPrimary: palette.white,
+    cardSecondary: palette.grayLight,
+    primary: palette.purplePrimary,
+    secondary: palette.pinkPrimary,
+    success: palette.greenPrimary,
+    text: palette.black,
+    textSecondarys: palette.gray,
+    whites: palette.white,
+    purple: palette.purplePrimary,
+    pinks: palette.pinkPrimary,
+    greens: palette.greenPrimary,
+    oranges: palette.orange,
+    yellows: palette.yellow,
     ...palette,
   },
 
@@ -65,6 +111,14 @@ const theme = createTheme({
     l: 24,
     xl: 32,
     xxl: 48,
+    2: 2,
+    4: 4,
+    8: 8,
+    12: 12,
+    16: 16,
+    24: 24,
+    32: 32,
+    48: 48,
   } as const,
 
   breakpoints: {
@@ -73,6 +127,30 @@ const theme = createTheme({
   },
 
   textVariants: {
+    header: {
+      fontWeight: "bold",
+      fontSize: 24,
+      color: "white",
+    },
+    subheader: {
+      fontSize: 16,
+      color: "white",
+      opacity: 0.9,
+    },
+    body: {
+      fontSize: 16,
+      color: "text",
+    },
+    caption: {
+      fontSize: 14,
+      color: "textSecondary",
+    },
+    button: {
+      fontSize: 14,
+      fontWeight: "600",
+      color: "white",
+    },
+
     defaults: {
       fontFamily: "Inter_400Regular",
       fontSize: {
@@ -84,8 +162,9 @@ const theme = createTheme({
 
     heading1: {
       fontFamily: "Inter_700Bold",
-      fontSize: 34,
+      fontSize: 30,
       lineHeight: 41,
+      fontWeight: "600",
       color: "textPrimary",
     },
 
@@ -95,7 +174,7 @@ const theme = createTheme({
       lineHeight: 34,
       color: "textPrimary",
     },
-    
+
     heading3: {
       fontFamily: "Inter_700Bold",
       fontSize: 24,
@@ -150,13 +229,6 @@ const theme = createTheme({
       color: "onSurface",
     },
 
-    label9: {
-      fontFamily: "Inter_600SemiBold",
-      fontSize: 15,
-      lineHeight: 18,
-      color: "onSurface",
-    },
-
     buttonLabel: {
       fontFamily: "Inter_600SemiBold",
       fontSize: 15,
@@ -166,66 +238,73 @@ const theme = createTheme({
 
     label1: {
       fontFamily: "Inter_400Regular",
-      fontSize: 15,
+      fontSize: 10,
       lineHeight: 18,
     },
 
     label2: {
       fontFamily: "Inter_400Regular",
-      fontSize: 14,
+      fontSize: 11,
       lineHeight: 24,
     },
 
     label3: {
       fontFamily: "Inter_600SemiBold",
-      fontSize: 14,
+      fontSize: 12,
       lineHeight: 18,
       color: "onSurface",
     },
     label4: {
       fontFamily: "Inter_400Regular",
-      fontSize: 14,
+      fontSize: 13,
       lineHeight: 20,
       color: "onSurface",
     },
     label5: {
       fontFamily: "Inter_500Medium",
-      fontSize: 15,
+      fontSize: 14,
       lineHeight: 18,
     },
     label6: {
       fontFamily: "Inter_500Medium",
-      fontSize: 11,
+      fontSize: 15,
       lineHeight: 18,
     },
     label7: {
       fontFamily: "Inter_500Medium",
-      fontSize: 12,
+      fontSize: 16,
       lineHeight: 18,
     },
     label8: {
       fontFamily: "Inter_600SemiBold",
-      fontSize: 12,
+      fontSize: 17,
       lineHeight: 18,
     },
+    label9: {
+      fontFamily: "Inter_600SemiBold",
+      fontSize: 18,
+      lineHeight: 18,
+      color: "onSurface",
+    },
+
     label10: {
       fontFamily: "Inter_400Regular",
-      fontSize: 13,
+      fontSize: 19,
       lineHeight: 18,
     },
     label11: {
       fontFamily: "Inter_400Regular",
-      fontSize: 12,
+      fontSize: 20,
       lineHeight: 16,
     },
     label12: {
       fontFamily: "Inter_400Regular",
-      fontSize: 14,
+      fontSize: 21,
       lineHeight: 16,
     },
     label13: {
       fontFamily: "Inter_600SemiBold",
-      fontSize: 16,
+      fontSize: 22,
     },
 
     labelRequired: {
@@ -344,30 +423,32 @@ const theme = createTheme({
     },
 
     text: {
-      backgroundColor: undefined,
+      backgroundColor: "black",
       borderWidth: 0,
     },
 
     textSecondary: {
-      backgroundColor: undefined,
+      backgroundColor: "black",
       borderWidth: 0,
     },
 
     reversed: {
       borderWidth: 1,
+      borderRadius: "s",
       borderColor: "blue",
       backgroundColor: "white",
     },
     gradient: {
-      color:'white',
-    borderWidth: 0,
-    borderRadius:0,
+      color: "white",
+      borderWidth: 0,
+      borderRadius: 0,
       backgroundColor: "transparent",
     },
 
     icon: {
-      borderWidth: 1,
-      borderColor: "black",
+      borderColor: "pink",
+      borderWidth: 0.8,
+      borderRadius: "s",
       backgroundColor: "semiTransparent",
       padding: "s",
     },
@@ -408,6 +489,29 @@ const theme = createTheme({
       backgroundColor: "white",
       fontFamily: "Inter_400Regular",
       height: 48,
+    },
+  },
+
+  cardVariants: {
+    defaults: {
+      backgroundColor: "cardPrimary",
+      borderRadius: "l",
+      padding: "m",
+      shadowColor: "black",
+      shadowOffset: { width: 0, height: 2 },
+      shadowOpacity: 0.1,
+      shadowRadius: 4,
+      elevation: 3,
+    },
+    elevated: {
+      backgroundColor: "cardPrimary",
+      borderRadius: "l",
+      padding: "l",
+      shadowColor: "black",
+      shadowOffset: { width: 0, height: 4 },
+      shadowOpacity: 0.15,
+      shadowRadius: 8,
+      elevation: 5,
     },
   },
 });

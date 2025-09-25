@@ -2,7 +2,6 @@ import { FieldProps } from "formik";
 
 import React, { useEffect, useState } from "react";
 
-
 import {
   ColorValue,
   NativeSyntheticEvent,
@@ -76,7 +75,7 @@ const TextField: React.FC<TextFieldProps & FieldProps> = ({
   customBackgroundColor,
   onKeyPress,
 }) => {
- // const { t } = useTranslation("forms");
+  // const { t } = useTranslation("forms");
   const [isFocused, setIsFocused] = useState<boolean>(false);
 
   useEffect(() => {
